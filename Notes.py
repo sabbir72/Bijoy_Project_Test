@@ -1,0 +1,1 @@
+# login_page.locator("li[role='option']", has_text="Humaira Composite Textile Mills Ltd.").click()
