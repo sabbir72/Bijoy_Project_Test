@@ -22,11 +22,10 @@ def login_page(page:Page):
     
 @pytest.fixture
 def signup_page(page:Page):
-
     page.goto(os.getenv("BASE_URL"))
     ClickSignIn= page.get_by_text('Sign In', exact=True)
+    ClickSignIn.wait_for(timeout=5000)
     ClickSignIn.click()
-
-    
-    
+   
+   
     return page
