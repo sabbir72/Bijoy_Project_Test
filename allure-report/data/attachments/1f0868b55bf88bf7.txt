@@ -1,0 +1,2 @@
+✅ Signup Successful:  This phone number is already registered
+❌  popup is not visible
