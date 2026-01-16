@@ -26,8 +26,6 @@ def signup_page(page:Page):
     ClickSignIn= page.get_by_text('Sign In', exact=True)
     ClickSignIn.wait_for(timeout=5000)
     ClickSignIn.click()
-   
-   
     return page
 
 @pytest.fixture
@@ -35,11 +33,11 @@ def signup_page_Demo(page:Page):
     page.goto(os.getenv("BASE_URL_D"))
     ClickSignIn= page.get_by_text('Sign In', exact=True)
     ClickSignIn.click()
-    ClickSignIn.wait_for(timeout=5000)
+
 
     page.get_by_role('textbox', name='Email/Phone').fill(os.getenv("EMAIL_D"))
     page.get_by_role('textbox', name='Password').fill(os.getenv("PASSWORD_D"))
     page.get_by_role('button', name='Sign In').click()
-    print("✅ Login Successful")
+    print(" Login Successful")
 
     return page
