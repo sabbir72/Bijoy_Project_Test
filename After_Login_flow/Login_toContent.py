@@ -40,4 +40,6 @@ def test_Login_to_Create_Doc(signup_page_Demo):
 
     signup_page_Demo.wait_for_timeout(5000)  # 1 second
 
+    signup_page_Demo.screenshot(path="last stage.png")
+
     
