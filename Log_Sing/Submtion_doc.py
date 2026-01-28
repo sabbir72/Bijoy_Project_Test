@@ -35,3 +35,5 @@ def test_signup_All_fields_check(Login_page):
 
    Login_page.wait_for_timeout(3000)  # 1 second
    Login_page.screenshot(path="Submission_page.png")
+
+   

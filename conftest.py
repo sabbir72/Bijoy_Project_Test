@@ -42,11 +42,26 @@ def Login_page(page:Page):
     return page
 
 @pytest.fixture
-def signup_page_Demo(page:Page):
+def signup_page_Demo(page:Page, context):
     page.goto(os.getenv("BASE_URL_D"))
+    page.locator("//button[@aria-label='Close announcement']//*[name()='svg']").click()
     ClickSignIn= page.get_by_text('Sign In', exact=True)
     ClickSignIn.click()
 
+    page.wait_for_timeout(2000)
+    # page.goto("https://beejoyi.vercel.app/sign-in")
+
+    # 🔴 এখানে তুমি manually:
+    # - email
+    # - password
+    # - Cloudflare CAPTCHA solve করবে
+
+    input("Login complete হলে Enter চাপো...")
+
+    # ✅ session + cookies save
+    context.storage_state(path="auth.json")
+
+    print("✅ Session saved successfully")
 
     page.get_by_role('textbox', name='Email/Phone').fill(os.getenv("EMAIL_D"))
     page.get_by_role('textbox', name='Password').fill(os.getenv("PASSWORD_D"))
