@@ -48,21 +48,16 @@ def signup_page_Demo(page:Page, context):
     ClickSignIn= page.get_by_text('Sign In', exact=True)
     ClickSignIn.click()
 
-    page.wait_for_timeout(2000)
-    # page.goto("https://beejoyi.vercel.app/sign-in")
 
-    # 🔴 এখানে তুমি manually:
-    # - email
-    # - password
-    # - Cloudflare CAPTCHA solve করবে
+    print("⚠️ Captcha থাকলে manually solve করুন...")
 
-    input("Login complete হলে Enter চাপো...")
+    # Manual captcha solve option
+    # page.pause()  
+    # অথবা auto wait for success indicator (Cloudflare)
+    page.wait_for_selector("text=Success!", timeout=60000)
 
-    # ✅ session + cookies save
-    context.storage_state(path="auth.json")
-
-    print("✅ Session saved successfully")
-
+    
+    page.wait_for_timeout(10000)
     page.get_by_role('textbox', name='Email/Phone').fill(os.getenv("EMAIL_D"))
     page.get_by_role('textbox', name='Password').fill(os.getenv("PASSWORD_D"))
     page.get_by_role('button', name='Sign In').click()
